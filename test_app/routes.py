@@ -23,7 +23,7 @@ def login():
         #  save current user for all future pages
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
-        
+
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
 
@@ -64,5 +64,4 @@ def index():
         },
     ]
 
-    return render_template('index.html', title='Home',
-                           user=user, posts=posts)
+    return render_template('index.html', title='Home', posts=posts)
