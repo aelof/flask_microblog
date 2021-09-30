@@ -1,5 +1,5 @@
 *.DS_Store
+app.db
 .idea
 .venv
 logs
-app.db

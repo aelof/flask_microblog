@@ -47,7 +47,8 @@ class EditProfileForm(FlaskForm):
 
 
 
-
+class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')
 
 
 

@@ -20,7 +20,7 @@ class UserModelCase(unittest.TestCase):
         self.assertTrue(u.check_password('dog'))
 
     def test_avatar(self):
-        u = User(username='pasha', email='pasha@gnail.urus')
+        u = User(username='john', email='john@example.com')
         self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/'
                                           'd4c74594d841139328695756648b6bd6'
                                           '?d=identicon&s=128'))
