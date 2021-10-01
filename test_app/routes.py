@@ -11,11 +11,45 @@ from test_app.forms import(
                            PostForm)
 
 
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
+@login_required
+def index():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now line!')
+        return redirect(url_for('index'))
+
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.followed_posts().paginate(
+        page, app.config['POST_PER_PAGE'], False)
+
+    return render_template('index.html', title='Home', 
+                            posts=posts.items, form=form)
+
 @app.route('/explore')
 @login_required
 def explore():
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', title='Explore', posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, app.config['POST_PER_PAGE'], False)
+    return render_template('index.html', title='Explore', posts=posts.items)
+
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = [
+            {'author': user, 'body': 'Test post #1'},
+            {'author': user, 'body': 'Test post #2'}]
+
+    return render_template('user.html', user=user, posts=posts, 
+                                        title='Profile')  
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -74,18 +108,7 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
-
-
-@app.route('/user/<username>')
-@login_required
-def user(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-            {'author': user, 'body': 'Test post #1'},
-            {'author': user, 'body': 'Test post #2'}]
-
-    return render_template('user.html', user=user, posts=posts, 
-                                        title='Profile')       
+     
 
 
 @app.route('/follow/<username>')
@@ -120,6 +143,9 @@ def unfollow(username):
     return redirect(url_for('user', username=username))
 
 
+
+
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
@@ -131,20 +157,3 @@ def before_request():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
-
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
-@login_required
-def index():
-    form = PostForm()
-    if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post is now line!')
-        return redirect(url_for('index'))
-
-    posts = current_user.followed_posts().all()
-    return render_template('index.html', title='Home', 
-                            posts=posts, form=form)
