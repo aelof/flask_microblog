@@ -1,15 +1,20 @@
 from test_app import app, db
 from flask import render_template, flash, redirect, url_for, request 
-from test_app.forms import LoginForm, RegistrationForm, EditProfileForm
 from flask_login import current_user, login_user, logout_user, login_required
-from test_app.models import User
+from test_app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
+from test_app.forms import( 
+                           LoginForm,
+                           RegistrationForm,
+                           EditProfileForm,
+                           PostForm)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated:  # current_user is user's object. Value is db's value
+    # current_user is user's object. Value is db's value
+    if current_user.is_authenticated:  
         return redirect(url_for('index'))
 
     form = LoginForm()
@@ -64,7 +69,6 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 
-
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -73,8 +77,8 @@ def user(username):
             {'author': user, 'body': 'Test post #1'},
             {'author': user, 'body': 'Test post #2'}]
 
-    return render_template('user.html', user=user, posts=posts, title='Profile')        
-
+    return render_template('user.html', user=user, posts=posts, 
+                                        title='Profile')       
 
 
 @app.route('/follow/<username>')
@@ -116,37 +120,24 @@ def before_request():
         db.session.commit()
 
 
-
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    user = {'username': 'alex'}
-    posts = [
-        {
-            'author': {'username': 'Vanya'},
-            'body': 'Beautiful day in Vena'
-        },
-        {
-            'author': {'username': 'Dasha'},
-            'body': 'The "Nu pogody" catroon was cool!'
-        },
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now line!')
+        return redirect(url_for('index'))
 
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Vena'
-        },
-        {
-            'author': {'username': 'Ипполит'},
-            'body': 'Какая гадость эта ваша заливная рыба!'
-
-        },
-    ]
-
-    return render_template('index.html', title='Home', posts=posts)
+    posts = current_user.followed_posts().all()
+    return render_template('index.html', title='Home', 
+                            posts=posts, form=form)
