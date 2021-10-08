@@ -3,3 +3,4 @@ app.db
 .idea
 .venv
 logs
+smalltest.py
