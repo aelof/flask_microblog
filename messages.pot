@@ -1,0 +1,240 @@
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-10-13 08:29+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: test_app/__init__.py:24
+msgid "Please log in to access this page."
+msgstr ""
+
+#: test_app/forms.py:9 test_app/forms.py:16 test_app/forms.py:49
+msgid "Username"
+msgstr ""
+
+#: test_app/forms.py:10 test_app/forms.py:18 test_app/forms.py:41
+msgid "Password"
+msgstr ""
+
+#: test_app/forms.py:11
+msgid "Remember Me"
+msgstr ""
+
+#: test_app/forms.py:12 test_app/routes.py:100 test_app/templates/login.html:5
+msgid "Sign In"
+msgstr ""
+
+#: test_app/forms.py:17 test_app/forms.py:36
+msgid "Email"
+msgstr ""
+
+#: test_app/forms.py:20 test_app/forms.py:43
+msgid "Repeat Password"
+msgstr ""
+
+#: test_app/forms.py:22 test_app/routes.py:146
+#: test_app/templates/register.html:5
+msgid "Register"
+msgstr ""
+
+#: test_app/forms.py:27 test_app/forms.py:62
+msgid "Please use a different username."
+msgstr ""
+
+#: test_app/forms.py:32
+msgid "Please use a different email address."
+msgstr ""
+
+#: test_app/forms.py:37 test_app/forms.py:45
+msgid "Request Password Reset"
+msgstr ""
+
+#: test_app/forms.py:50
+msgid "About me"
+msgstr ""
+
+#: test_app/forms.py:52 test_app/forms.py:71
+msgid "Submit"
+msgstr ""
+
+#: test_app/forms.py:70
+msgid "Say something"
+msgstr ""
+
+#: test_app/routes.py:28
+msgid "Your post is now live!"
+msgstr ""
+
+#: test_app/routes.py:39 test_app/templates/base.html:21
+msgid "Home"
+msgstr ""
+
+#: test_app/routes.py:54 test_app/templates/base.html:22
+msgid "Explore"
+msgstr ""
+
+#: test_app/routes.py:72 test_app/templates/base.html:28
+msgid "Profile"
+msgstr ""
+
+#: test_app/routes.py:88
+msgid "Invalid username or password"
+msgstr ""
+
+#: test_app/routes.py:114
+msgid "Your password has been reset."
+msgstr ""
+
+#: test_app/routes.py:128
+msgid "Check your email for the incstructions to reset your password"
+msgstr ""
+
+#: test_app/routes.py:131 test_app/templates/reset_password_request.html:5
+msgid "Reset Password"
+msgstr ""
+
+#: test_app/routes.py:144
+msgid "Congratulatons, you are now a register user"
+msgstr ""
+
+#: test_app/routes.py:157
+msgid "Your changes have been saved"
+msgstr ""
+
+#: test_app/routes.py:162 test_app/templates/edit_profile.html:5
+msgid "Edit Profile"
+msgstr ""
+
+#: test_app/routes.py:170
+msgid "user {} not found,"
+msgstr ""
+
+#: test_app/routes.py:173
+msgid "You cannot follow yourself"
+msgstr ""
+
+#: test_app/routes.py:177
+msgid "You are following {}"
+msgstr ""
+
+#: test_app/routes.py:186
+msgid "User {} not found"
+msgstr ""
+
+#: test_app/routes.py:189
+msgid "You cannot unfollow yourself!"
+msgstr ""
+
+#: test_app/routes.py:193
+msgid "You are not following {} anymore"
+msgstr ""
+
+#: test_app/templates/404.html:4
+msgid "Not Found"
+msgstr ""
+
+#: test_app/templates/404.html:5 test_app/templates/500.html:6
+msgid "Back"
+msgstr ""
+
+#: test_app/templates/500.html:4
+msgid "An unexpected error has occurred"
+msgstr ""
+
+#: test_app/templates/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr ""
+
+#: test_app/templates/_post.html:14
+#, python-format
+msgid "%(username)s said %(when)s"
+msgstr ""
+
+#: test_app/templates/base.html:4
+msgid "Welcome to Microblog"
+msgstr ""
+
+#: test_app/templates/base.html:26
+msgid "Login"
+msgstr ""
+
+#: test_app/templates/base.html:29
+msgid "Logout"
+msgstr ""
+
+#: test_app/templates/index.html:5
+#, python-format
+msgid "Hi, %(username)s!"
+msgstr ""
+
+#: test_app/templates/index.html:17 test_app/templates/user.html:41
+msgid "Newer posts"
+msgstr ""
+
+#: test_app/templates/index.html:22 test_app/templates/user.html:46
+msgid "Older posts"
+msgstr ""
+
+#: test_app/templates/login.html:12
+msgid "New User?"
+msgstr ""
+
+#: test_app/templates/login.html:12
+msgid "Click to Register!"
+msgstr ""
+
+#: test_app/templates/login.html:14
+msgid "Forgot Your Password?"
+msgstr ""
+
+#: test_app/templates/login.html:15
+msgid "Click to Reset It"
+msgstr ""
+
+#: test_app/templates/reset_password.html:5
+msgid "Reset Your Password"
+msgstr ""
+
+#: test_app/templates/user.html:8
+msgid "User"
+msgstr ""
+
+#: test_app/templates/user.html:11
+msgid "Last seen on"
+msgstr ""
+
+#: test_app/templates/user.html:13
+#, python-format
+msgid "%(count)d followers"
+msgstr ""
+
+#: test_app/templates/user.html:13
+#, python-format
+msgid "%(count)d following"
+msgstr ""
+
+#: test_app/templates/user.html:15
+msgid "Edit your profile"
+msgstr ""
+
+#: test_app/templates/user.html:20
+msgid "Follow"
+msgstr ""
+
+#: test_app/templates/user.html:27
+msgid "Unfollow"
+msgstr ""
+

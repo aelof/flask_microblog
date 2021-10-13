@@ -1,6 +1,12 @@
-*.DS_Store
-app.db
+smalltest.py
+
+logs
+
+
 .idea
 .venv
-logs
-smalltest.py
+.DS_Store 
+
+app.db
+
+*.mo

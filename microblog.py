@@ -1,5 +1,6 @@
-from test_app import app, db
+from test_app import app, db, cli
 from test_app.models import User, Post
+
 
 
 @app.shell_context_processor
