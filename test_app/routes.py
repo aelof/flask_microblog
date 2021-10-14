@@ -14,6 +14,7 @@ from test_app.forms import (
                            ResetPasswordForm,
                            EmptyForm)
 from flask_babel import _, get_locale
+from guess_language import guess_language
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -22,6 +23,9 @@ from flask_babel import _, get_locale
 def index():
     form = PostForm()
     if form.validate_on_submit():
+        language = guess_language(form.post.data)
+        if language == 'UNKNOWN' or len(lenguage) > 5:
+            language = ''
         post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()

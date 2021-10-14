@@ -13,6 +13,8 @@ class Config(object):
 
     POSTS_PER_PAGE = 8
 
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
+
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
