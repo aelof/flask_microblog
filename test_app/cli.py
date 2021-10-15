@@ -1,12 +1,12 @@
 import os
 import click
-from test_app import app
 
 
-@app.cli.group()
-def translate():
-    """Translation and localization commands."""
-    pass
+def register(app)
+    @app.cli.group()
+    def translate():
+        """Translation and localization commands."""
+        pass
 
 
 @translate.command()
